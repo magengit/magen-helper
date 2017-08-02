@@ -1,5 +1,6 @@
 KILL_MONGO=bash $(MAGEN_HELPER)/helper_scripts/kill_local_mongo.sh
 START_MONGO=bash $(MAGEN_HELPER)/helper_scripts/start_local_mongo.sh
+UPLOAD_ARTIFACTS=bash $(MAGEN_HELPER)/helper_scripts/upload_artifacts.sh $(DOCKER_SRC_TAG) $(DOCKER_IMAGE)
 
 common_default:
 	@echo 'Makefile for $(PACKAGE_NAME)'
@@ -57,8 +58,8 @@ common_install:
 	    then echo '========== $(PACKAGE_NAME) WAS NOT INSTALLED ========== ';\
 	    else echo '========== $(PACKAGE_NAME) INSTALLED =========='; fi
 
-upload:
-	@$(PYTHON) setup.py bdist_wheel upload -r jfrog
+common_upload:
+	$(UPLOAD_ARTIFACTS)
 
 uninstall:
 	$(info ************ UNINSTALL $(PACKAGE_NAME) *************)
