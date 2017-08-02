@@ -19,8 +19,8 @@ common_default:
 	@echo '	make stop_docker  	:Stop and Remove All running Docker containers'
 	@echo '	make clean_docker 	:Remove Docker unused images'
 	@echo '	make rm_docker    	:Remove All Docker images if no containers running'
-	@echo ' make update         :Update submodules for current GitHub repository'
-	@echo ' make doc            :Generate Sphinx API docs'
+	@echo '	make update		:Update submodules for current GitHub repository'
+	@echo '	make doc		:Generate Sphinx API docs'
 	@echo
 	@echo
 
