@@ -2,3 +2,4 @@
 # Pycharm
 .idea/
 .DS_store
+*logs

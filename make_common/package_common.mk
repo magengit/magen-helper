@@ -1,6 +1,7 @@
 KILL_MONGO=bash $(MAGEN_HELPER)/helper_scripts/kill_local_mongo.sh
 START_MONGO=bash $(MAGEN_HELPER)/helper_scripts/start_local_mongo.sh
 UPLOAD_ARTIFACTS=bash $(MAGEN_HELPER)/helper_scripts/upload_artifacts.sh $(DOCKER_SRC_TAG) $(DOCKER_IMAGE)
+RUN_PACKAGE=bash $(MAGEN_HELPER)/helper_scripts/run_pkg_service.sh $(SERVER_NAME) $(LOG_DIR)
 
 common_default:
 	@echo 'Makefile for $(PACKAGE_NAME)'
@@ -110,6 +111,9 @@ clean_test: stop_docker clean_docker
 	@$(MAKE) pre_test
 	@$(MAKE) run_unit_test
 	@$(MAKE) coverage_report
+
+common_run:
+	$(RUN_PACKAGE)
 
 check:
 	@$(PYTHON) -m flake8
