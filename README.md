@@ -11,7 +11,7 @@ Instructions:
 
 You can add magen-helper submodule with command:
 
-  ```git submodule add https://github.com/Cisco-Magen/magen-helper.git lib/magen_helper``` 
+  ```git submodule add https://github.com/magengit/magen-helper.git lib/magen_helper``` 
   
   This will create folder **/lib/magen_helper** and **.gitmodules** file 
   
@@ -24,7 +24,7 @@ Here is example of ```.gitmodules``` file. You can manually edit it to change se
 ```yaml
 [submodule "lib/magen_helper"]
         path = lib/magen_helper
-        url = https://github.com/Cisco-Magen/magen-helper.git
+        url = https://github.com/magengit/magen-helper.git
 ```
 
 ### Update submodules
