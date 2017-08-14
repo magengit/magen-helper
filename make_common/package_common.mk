@@ -1,7 +1,7 @@
 KILL_MONGO=bash $(MAGEN_HELPER)/helper_scripts/kill_local_mongo.sh
 START_MONGO=bash $(MAGEN_HELPER)/helper_scripts/start_local_mongo.sh
 UPLOAD_ARTIFACTS=bash $(MAGEN_HELPER)/helper_scripts/upload_artifacts.sh $(DOCKER_SRC_TAG) $(DOCKER_IMAGE)
-RUN_PACKAGE=bash $(MAGEN_HELPER)/helper_scripts/run_pkg_service.sh $(SERVER_NAME) $(LOG_DIR)
+RUN_PACKAGE=bash $(MAGEN_HELPER)/helper_scripts/run_pkg_service.sh $(SERVER_NAME)
 
 common_default:
 	@echo 'Makefile for $(PACKAGE_NAME)'
