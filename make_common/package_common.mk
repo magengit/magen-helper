@@ -7,10 +7,11 @@ common_default:
 	@echo 'Makefile for $(PACKAGE_NAME)'
 	@echo
 	@echo 'Usage:'
-	@echo '	make clean    		:Remove packages from system and pyc files'
+	@echo '	make clean    		:Clear cache and pyc files'
 	@echo '	make test     		:Run the test suite'
 	@echo '	make package  		:Create Python wheel package'
 	@echo '	make install  		:Install Python wheel package'
+	@echo '	make uninstall		:Uninstall Python wheel package'
 	@echo '	make all      		:clean->package->install'
 	@echo '	make list     		:List of All Magen Dependencies'
 	@echo '	make build_docker 	:Pull Base Docker Image and Current Image'
@@ -62,7 +63,7 @@ common_install:
 common_upload:
 	$(UPLOAD_ARTIFACTS)
 
-uninstall:
+common_uninstall:
 	$(info ************ UNINSTALL $(PACKAGE_NAME) *************)
 	@$(PIP) show $(PACKAGE_NAME) ; if [ $$? -eq 0 ] ; then $(PIP) uninstall --yes $(PACKAGE_NAME) ; fi
 
