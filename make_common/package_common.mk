@@ -51,7 +51,8 @@ common_package:
 	$(info ************ BUILDING PACKAGE: $(PACKAGE_NAME) ************)
 	@cd dist; rm -f $(WHEEl)
 	@$(PYTHON) setup.py bdist_wheel
-	@cp dist/$(WHEEL) docker_$(PACKAGE_TAG)/
+	@if [ -d docker_$(PACKAGE_TAG) ];\
+		then cp dist/$(WHEEL) docker_$(PACKAGE_TAG); fi
 
 common_install:
 	$(info ************ INSTALL $(PACKAGE_NAME) *************)
