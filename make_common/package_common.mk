@@ -84,16 +84,16 @@ clean_pycache:
 	@find . \( -name \.cache \) -prune -exec rm -rf {} +
 	@find . \( -name \htmlcov \) -prune -exec rm -rf {} +
 
-coverage_report:
+common_coverage_report:
 	@coverage report
 	@coverage html
 
-pre_test:
+common_pre_test:
 	$(info ==========  PRETEST CLEANING ==========)
 	@rm -rf coverage_html_report
 	@coverage erase
 
-run_unit_test:
+common_run_unit_test:
 	@sleep 2
 	$(info ************  STARTING TESTS ************)
 	@$(COVERAGE) $(PYTEST) tests
