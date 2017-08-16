@@ -1,3 +1,4 @@
+PIP=pip3
 KILL_MONGO=bash $(MAGEN_HELPER)/helper_scripts/kill_local_mongo.sh
 START_MONGO=bash $(MAGEN_HELPER)/helper_scripts/start_local_mongo.sh
 UPLOAD_ARTIFACTS=bash $(MAGEN_HELPER)/helper_scripts/upload_artifacts.sh $(DOCKER_SRC_TAG) $(DOCKER_IMAGE)
@@ -117,7 +118,7 @@ clean_test: stop_docker clean_docker
 common_run:
 	$(RUN_PACKAGE)
 
-check:
+common_check:
 	@$(PYTHON) -m flake8
 
 .PHONY:  pre_test coverage_report all build_docker
