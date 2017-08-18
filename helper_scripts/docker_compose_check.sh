@@ -12,4 +12,3 @@ if [ -z `which docker-compose` ] || [ ${docker_compose_v} -lt 110 ]; then
     echo
     exit 127
 fi
-
