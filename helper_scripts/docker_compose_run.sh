@@ -5,10 +5,10 @@ progname=$(basename $0)
 usage()
 {
     cat <<USAGE
-Usage: $progname -mode {operational|test} --data-dir <dir> [--mongo-ip-port <port>]
+Usage: $progname path_to_docker_compose_file container_name port
 
 Description:
-	Run policy server and location server, as appropriate for mode
+	Run docker container and required links
 USAGE
 
     exit $1
@@ -45,9 +45,10 @@ port=$3
 magen_network_name='magen_net'
 docker_mongo_name='magen_mongo'
 
-if [ ! -z `$2` ]; then
-    echo "
+if [ -z "$service_name" ] || [ -z "$port" ]; then
+    echo "Container [name] and [port] are required arguments"
     usage 1;
+fi
 
 ###
 ### MAIN
