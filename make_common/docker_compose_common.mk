@@ -5,10 +5,10 @@ common_docker_compose_build:
 	@docker-compose build
 
 common_docker_compose_rundev:
-	@$(DOCKER_COMPOSE_RUN) $(staging_dir)/docker-compose.yml $(service_name) $(port)
+	@$(DOCKER_COMPOSE_RUN) $(staging_dir)/docker-compose.yml $(mkcmn_docker_compose_service_name) $(mkcmn_docker_compose_service_port)
 
 common_docker_compose_runpkg:
-	@$(DOCKER_COMPOSE_RUN) $(staging_dir)/docker-compose-runpkg.yml $(service_name) $(port)
+	@$(DOCKER_COMPOSE_RUN) $(staging_dir)/docker-compose-runpkg.yml $(mkcmn_docker_compose_service_name) $(mkcmn_docker_compose_service_port)
 
 common_docker_compose_test:
 	@$(DOCKER_COMPOSE_UP) -f docker-compose-test.yml up --build --abort-on-container-exit

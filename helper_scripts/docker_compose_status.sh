@@ -21,15 +21,15 @@ fi
 docker_compose_file=$1
 
 exit_status=0 # assume no errors
-for container in $(docker-compose -f $docker_compose_file ps -q); do
-    container_status=$(docker inspect -f '{{ .State.ExitCode }}' $container)
+for container in $(docker-compose -f ${docker_compose_file} ps -q); do
+    container_status=$(docker inspect -f '{{ .State.ExitCode }}' ${container})
     container_status=${container_status:-1} # assume 1 if not found
-    if [ $container_status != 0 ]; then
-        container_name=$(docker inspect -f '{{ .Name }}' $container)
-        echo "$progname: ERROR: container $container_name exited $container_status" >&2
-	if [ $container_status -gt $exit_status ]; then
-	    exit_status=$container_status
+    if [ ${container_status} != 0 ]; then
+        container_name=$(docker inspect -f '{{ .Name }}' ${container})
+        echo "$progname: ERROR: container ${container_name} exited ${container_status}" >&2
+	if [ ${container_status} -gt ${exit_status} ]; then
+	    exit_status=${container_status}
 	fi
     fi
 done
-exit $exit_status
+exit ${exit_status}
