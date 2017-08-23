@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 set -u
-set -ev
+set -e
 set -o pipefail
 
 prog_dir=`dirname $0`

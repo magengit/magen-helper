@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-#!/bin/bash
+set -u
 
 DATA_DIR="~/data/db"
 if [ "$(pgrep mongod)" == "" ]

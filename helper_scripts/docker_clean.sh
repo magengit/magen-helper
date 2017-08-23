@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -u
 
 if [ -n "$(docker ps -a | grep Exit)" ]
 then

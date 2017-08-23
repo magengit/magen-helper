@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -u
 
 if [ ! -z "$(docker ps -a -q)" ]
 then

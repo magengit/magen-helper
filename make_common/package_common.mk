@@ -2,7 +2,7 @@ PIP=pip3
 KILL_MONGO=bash $(MAGEN_HELPER)/helper_scripts/mongo_local_kill.sh
 START_MONGO=bash $(MAGEN_HELPER)/helper_scripts/mongo_local_start.sh
 UPLOAD_ARTIFACTS=bash $(MAGEN_HELPER)/helper_scripts/artifactory_upload_os.sh $(DOCKER_SRC_TAG) $(DOCKER_IMAGE)
-RUN_PACKAGE=bash $(MAGEN_HELPER)/helper_scripts/run_pkg_service.sh $(SERVER_NAME) $(MAGEN_HELPER)
+RUN_PACKAGE=bash $(MAGEN_HELPER)/helper_scripts/magen_svc_run.sh $(SERVER_NAME) $(MAGEN_HELPER)
 
 common_default:
 	@echo 'Makefile for $(PACKAGE_NAME)'
@@ -50,7 +50,7 @@ common_clean:
 
 common_package:
 	$(info ************ BUILDING PACKAGE: $(PACKAGE_NAME) ************)
-	@cd dist; rm -f $(WHEEl)
+	@rm -f dist/$(WHEEl)
 	@$(PYTHON) setup.py bdist_wheel
 	@if [ -d docker_$(PACKAGE_TAG) ];\
 		then cp dist/$(WHEEL) docker_$(PACKAGE_TAG); fi

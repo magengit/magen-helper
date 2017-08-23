@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -u
 
 server_script=$1
 
@@ -21,8 +22,11 @@ else
     bash ${helper_path}/mongo_local_start.sh || exit 1
 fi
 
-if [ ${prefix} == "policy" ]; then
+case $prefix in
+policy)
     ${server_script}
-fi
-
-${server_script} --data-dir ~/data --console-log-level ${log_level}
+    ;;
+*)
+    ${server_script} --data-dir ~/magen_data --console-log-level ${log_level}
+    ;;
+esac

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 set -u
-set -ev
+set -e
 set -o pipefail
 
 docker_compose_v=`docker-compose -v | awk -F "," '{ print $1 }' | awk '{ print $3 }' | awk -F "." '{ print $1 $2 }'`
