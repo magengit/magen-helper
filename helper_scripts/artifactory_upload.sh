@@ -7,8 +7,8 @@ prog_dir=`dirname $0`
 PATH=$PATH:${prog_dir}    # find various sub-utilities, e.g. aws_login.sh
 
 # per-service state
-DOCKER_SRC_TAG=$1 # magen_ks:v1.3
-DOCKER_IMAGE=$2 # magen-ks
+DOCKER_SRC_TAG=$1 # docker image + tag, ex.: magen_ks:v1.3
+DOCKER_IMAGE=$2 # docker image name, ex.: magen-ks
 
 TO_BUILD=${TO_BUILD:-Unset}
 if [ "$TO_BUILD" = "NATIVE" ]; then
