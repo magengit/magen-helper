@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #!/bin/bash
 
-DATA_DIR="/data/db"
+DATA_DIR="~/data/db"
 if [ "$(pgrep mongod)" == "" ]
 then
     echo "************  STARTING LOCAL MONGO ************"
