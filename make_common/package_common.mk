@@ -2,7 +2,7 @@ PIP=pip3
 KILL_MONGO=bash $(MAGEN_HELPER)/helper_scripts/mongo_local_kill.sh
 START_MONGO=bash $(MAGEN_HELPER)/helper_scripts/mongo_local_start.sh
 UPLOAD_ARTIFACTS=bash $(MAGEN_HELPER)/helper_scripts/artifactory_upload.sh $(DOCKER_SRC_TAG) $(DOCKER_IMAGE)
-RUN_PACKAGE=bash $(MAGEN_HELPER)/helper_scripts/run_pkg_service.sh $(SERVER_NAME)
+RUN_PACKAGE=bash $(MAGEN_HELPER)/helper_scripts/run_pkg_service.sh $(SERVER_NAME) $(MAGEN_HELPER)
 
 common_default:
 	@echo 'Makefile for $(PACKAGE_NAME)'

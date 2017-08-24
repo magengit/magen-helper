@@ -4,7 +4,7 @@ magen_network_name='magen_net'
 
 if [ -n "$(docker images -q)" ]; then
     echo "Removing All Images"
-    docker rmi $(docker images -q) > /dev/null
+    docker rmi -f $(docker images -q) > /dev/null
 fi
 if [ -n "$(docker volume ls -qf dangling=true)" ]; then
     echo "Clearing All Volumes"
