@@ -121,4 +121,4 @@ common_run:
 common_check:
 	@$(PYTHON) -m flake8
 
-.PHONY:  pre_test coverage_report all build_docker
+.PHONY:  pre_test coverage_report all build_docker common_run_unit_test
