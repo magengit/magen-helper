@@ -13,7 +13,7 @@
 #  }"
 
 
-echo "y" | travis login --pro --github-token  $GIT_HUB_TOKEN
+echo "y" | travis login --org --github-token  $GIT_HUB_TOKEN
 
 message="Magen-core commit: "$TRAVIS_COMMIT", job: $TO_BUILD, triggering build"
 build="TO_BUILD=$TO_BUILD"
@@ -33,13 +33,37 @@ body="{
 
 echo $body
 
-curl -s -X POST \
- -H "Content-Type: application/json" \
- -H "Accept: application/json" \
- -H "Travis-API-Version: 3" \
- -H "Authorization: token ${TRAVIS_AUTH_TOKEN}" \
- -d "$body" \
- https://api.travis-ci.com/repo/Cisco-Magen%2Fmagen-ps/requests
+#curl -s -X POST \
+# -H "Content-Type: application/json" \
+# -H "Accept: application/json" \
+# -H "Travis-API-Version: 3" \
+# -H "Authorization: token ${TRAVIS_AUTH_TOKEN}" \
+# -d "$body" \
+# https://api.travis-ci.org/repo/magengit%2Fmagen-ps/requests
+
+#curl -s -X POST \
+# -H "Content-Type: application/json" \
+# -H "Accept: application/json" \
+# -H "Travis-API-Version: 3" \
+# -H "Authorization: token ${TRAVIS_AUTH_TOKEN}" \
+# -d "$body" \
+# https://api.travis-ci.org/repo/magengit%2Fmagen-ks/requests
+
+#curl -s -X POST \
+# -H "Content-Type: application/json" \
+# -H "Accept: application/json" \
+# -H "Travis-API-Version: 3" \
+# -H "Authorization: token ${TRAVIS_AUTH_TOKEN}" \
+# -d "$body" \
+# https://api.travis-ci.org/repo/magengit%2Fmagen-in/requests
+#
+#curl -s -X POST \
+# -H "Content-Type: application/json" \
+# -H "Accept: application/json" \
+# -H "Travis-API-Version: 3" \
+# -H "Authorization: token ${TRAVIS_AUTH_TOKEN}" \
+# -d "$body" \
+# https://api.travis-ci.org/repo/magengit%2Fmagen-id/requests
 
 curl -s -X POST \
  -H "Content-Type: application/json" \
@@ -47,44 +71,13 @@ curl -s -X POST \
  -H "Travis-API-Version: 3" \
  -H "Authorization: token ${TRAVIS_AUTH_TOKEN}" \
  -d "$body" \
- https://api.travis-ci.com/repo/Cisco-Magen%2Fmagen-ks/requests
+ https://api.travis-ci.org/repo/magengit%2Fmagen-core/requests
 
-curl -s -X POST \
- -H "Content-Type: application/json" \
- -H "Accept: application/json" \
- -H "Travis-API-Version: 3" \
- -H "Authorization: token ${TRAVIS_AUTH_TOKEN}" \
- -d "$body" \
- https://api.travis-ci.com/repo/Cisco-Magen%2Fmagen-ingestion/requests
+#curl -s -X POST \
+# -H "Content-Type: application/json" \
+# -H "Accept: application/json" \
+# -H "Travis-API-Version: 3" \
+# -H "Authorization: token ${TRAVIS_AUTH_TOKEN}" \
+# -d "$body" \
+# https://api.travis-ci.org/repo/magengit%2Fmagen-hwa/requests
 
-curl -s -X POST \
- -H "Content-Type: application/json" \
- -H "Accept: application/json" \
- -H "Travis-API-Version: 3" \
- -H "Authorization: token ${TRAVIS_AUTH_TOKEN}" \
- -d "$body" \
- https://api.travis-ci.com/repo/Cisco-Magen%2Fmagen-id/requests
-
-curl -s -X POST \
- -H "Content-Type: application/json" \
- -H "Accept: application/json" \
- -H "Travis-API-Version: 3" \
- -H "Authorization: token ${TRAVIS_AUTH_TOKEN}" \
- -d "$body" \
- https://api.travis-ci.com/repo/Cisco-Magen%2Fmagen-id-open-source/requests
-
-curl -s -X POST \
- -H "Content-Type: application/json" \
- -H "Accept: application/json" \
- -H "Travis-API-Version: 3" \
- -H "Authorization: token ${TRAVIS_AUTH_TOKEN}" \
- -d "$body" \
- https://api.travis-ci.com/repo/Cisco-Magen%2Fmagen-hwa/requests
-
-curl -s -X POST \
- -H "Content-Type: application/json" \
- -H "Accept: application/json" \
- -H "Travis-API-Version: 3" \
- -H "Authorization: token ${TRAVIS_AUTH_TOKEN}" \
- -d "$body" \
- https://api.travis-ci.com/repo/Cisco-Magen%2Fmagen-bwa/requests
