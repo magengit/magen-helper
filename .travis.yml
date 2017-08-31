@@ -58,6 +58,8 @@ matrix:
   include:
     - python: 3.6
       env: TO_BUILD=NATIVE
+    - python: 3.6
+      env: TO_BUILD=DOCKER
   fast_finish: true
 
 script:
