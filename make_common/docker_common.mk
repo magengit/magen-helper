@@ -1,6 +1,6 @@
 STOP_DOCKER=bash $(MAGEN_HELPER)/helper_scripts/docker_stop.sh
 CLEAN_DOCKER=bash $(MAGEN_HELPER)/helper_scripts/docker_clean.sh
-PULL_BASE_DOCKER=cd $(MAGEN_HELPER)/helper_scripts && bash docker_download_base_docker.sh
+PULL_BASE_DOCKER=cd $(MAGEN_HELPER)/helper_scripts && bash docker_download_base_docker_os.sh
 REMOVE_DOCKERS=bash $(MAGEN_HELPER)/helper_scripts/docker_rm_all_images.sh
 
 common_clean_docker:
