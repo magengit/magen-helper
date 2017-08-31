@@ -13,7 +13,6 @@ DOCKER_IMAGE=$2 # docker image name, ex.: magen-ks
 TO_BUILD=${TO_BUILD:-Unset}
 if [ "$TO_BUILD" = "NATIVE" ]; then
     twine upload --username "$PYPI_USERNAME" --password  "$PYPI_PASSWORD" dist/*
-#     python3 setup.py bdist_wheel upload -r jfrog || exit 1;
 elif [ "$TO_BUILD" = "DOCKER" ]; then
     docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD" || exit 1
     docker tag ${DOCKER_SRC_TAG} magendocker/${DOCKER_IMAGE}:latest
