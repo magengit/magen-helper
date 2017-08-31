@@ -64,7 +64,7 @@ matrix:
 
 script:
   - if [ "$TRAVIS_BRANCH" = "master" -a "$TRAVIS_PULL_REQUEST" = "false" ]; then
-      helper_scripts/travis_trigger_dependent_builds.sh; fi;
+      helper_scripts/travis_trigger_dependent_builds.sh;
     else
       echo $TRAVIS_BRANCH;
     fi
