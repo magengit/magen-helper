@@ -41,13 +41,13 @@ echo $body
 # -d "$body" \
 # https://api.travis-ci.org/repo/magengit%2Fmagen-ps/requests
 
-#curl -s -X POST \
-# -H "Content-Type: application/json" \
-# -H "Accept: application/json" \
-# -H "Travis-API-Version: 3" \
-# -H "Authorization: token ${TRAVIS_AUTH_TOKEN}" \
-# -d "$body" \
-# https://api.travis-ci.org/repo/magengit%2Fmagen-ks/requests
+curl -s -X POST \
+ -H "Content-Type: application/json" \
+ -H "Accept: application/json" \
+ -H "Travis-API-Version: 3" \
+ -H "Authorization: token ${TRAVIS_AUTH_TOKEN}" \
+ -d "$body" \
+ https://api.travis-ci.org/repo/magengit%2Fmagen-ks/requests
 
 curl -s -X POST \
  -H "Content-Type: application/json" \
@@ -56,7 +56,7 @@ curl -s -X POST \
  -H "Authorization: token ${TRAVIS_AUTH_TOKEN}" \
  -d "$body" \
  https://api.travis-ci.org/repo/magengit%2Fmagen-in/requests
-#
+
 #curl -s -X POST \
 # -H "Content-Type: application/json" \
 # -H "Accept: application/json" \
@@ -65,13 +65,13 @@ curl -s -X POST \
 # -d "$body" \
 # https://api.travis-ci.org/repo/magengit%2Fmagen-id/requests
 
-#curl -s -X POST \
-# -H "Content-Type: application/json" \
-# -H "Accept: application/json" \
-# -H "Travis-API-Version: 3" \
-# -H "Authorization: token ${TRAVIS_AUTH_TOKEN}" \
-# -d "$body" \
-# https://api.travis-ci.org/repo/magengit%2Fmagen-core/requests
+curl -s -X POST \
+ -H "Content-Type: application/json" \
+ -H "Accept: application/json" \
+ -H "Travis-API-Version: 3" \
+ -H "Authorization: token ${TRAVIS_AUTH_TOKEN}" \
+ -d "$body" \
+ https://api.travis-ci.org/repo/magengit%2Fmagen-core/requests
 
 #curl -s -X POST \
 # -H "Content-Type: application/json" \

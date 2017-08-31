@@ -100,20 +100,20 @@ common_run_unit_test:
 
 common_test:
 	@$(MAKE) start_mongo
-	@$(MAKE) pre_test
+	@$(MAKE) common_pre_test
 	@$(MAKE) common_run_unit_test
-	@$(MAKE) coverage_report
+	@$(MAKE) common_coverage_report
 
 common_test_travis:
-	@$(MAKE) pre_test
+	@$(MAKE) common_pre_test
 	@$(MAKE) common_run_unit_test
-	@$(MAKE) coverage_report
+	@$(MAKE) common_coverage_report
 
 clean_test: stop_docker clean_docker
 	@$(MAKE) start_mongo
-	@$(MAKE) pre_test
+	@$(MAKE) common_pre_test
 	@$(MAKE) common_run_unit_test
-	@$(MAKE) coverage_report
+	@$(MAKE) common_coverage_report
 
 common_run:
 	$(RUN_PACKAGE)
@@ -121,4 +121,4 @@ common_run:
 common_check:
 	@$(PYTHON) -m flake8
 
-.PHONY:  pre_test coverage_report all build_docker common_run_unit_test
+.PHONY:  common_pre_test common_run_unit_test common_run_unit_test
