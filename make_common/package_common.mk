@@ -100,20 +100,20 @@ common_run_unit_test:
 
 common_test:
 	@$(MAKE) start_mongo
-	@$(MAKE) common_pre_test
-	@$(MAKE) common_run_unit_test
-	@$(MAKE) common_coverage_report
+	@$(MAKE) pre_test
+	@$(MAKE) run_unit_test
+	@$(MAKE) coverage_report
 
 common_test_travis:
-	@$(MAKE) common_pre_test
-	@$(MAKE) common_run_unit_test
-	@$(MAKE) common_coverage_report
+	@$(MAKE) pre_test
+	@$(MAKE) run_unit_test
+	@$(MAKE) coverage_report
 
 clean_test: stop_docker clean_docker
 	@$(MAKE) start_mongo
-	@$(MAKE) common_pre_test
-	@$(MAKE) common_run_unit_test
-	@$(MAKE) common_coverage_report
+	@$(MAKE) pre_test
+	@$(MAKE) run_unit_test
+	@$(MAKE) coverage_report
 
 common_run:
 	$(RUN_PACKAGE)
