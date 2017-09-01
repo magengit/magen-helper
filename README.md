@@ -1,5 +1,7 @@
 # Magen Helper Submodule Repository
 
+[![Build Status](https://travis-ci.org/magengit/magen-helper.svg?branch=master)](https://travis-ci.org/magengit/magen-helper)
+
 This is a dependency repository that stores all helper scripts for infrastructure that all Magen components depend on.
 
 Instructions:
