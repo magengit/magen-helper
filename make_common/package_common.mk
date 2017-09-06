@@ -50,7 +50,7 @@ common_clean:
 
 common_package:
 	$(info ************ BUILDING PACKAGE: $(PACKAGE_NAME) ************)
-	@rm -f dist/$(WHEEl)
+	@rm -f dist/$(WHEEL)
 	@$(PYTHON) setup.py bdist_wheel
 	@if [ -d docker_$(PACKAGE_TAG) ];\
 		then cp dist/$(WHEEL) docker_$(PACKAGE_TAG); fi
