@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
+set -u
 
 magen_network_name='magen_net'
 
-if [ -n "$(docker images -q)" ]; then
+images=$(docker images -q | sort | uniq)
+if [ -n "$images" ]; then
     echo "Removing All Images"
     docker rmi -f $(docker images -q) > /dev/null
 fi

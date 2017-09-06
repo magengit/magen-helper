@@ -1,20 +1,8 @@
 #!/usr/bin/env bash
 set -u
 
-progname=$(basename $0)
-
-usage()
-{
-    cat <<USAGE
-Usage: $progname path_to_docker_compose_file container_name port
-
-Description:
-	Run docker container and required links
-USAGE
-
-    exit $1
-}
-
+# can a simple "docker-compose up" be used?
+#
 # return 0 if can run docker-compose up to run all containers in yml file.
 #          (mongo not needed, or needed and not running)
 # return 1 if must supply additional parameters to start service but not mongo
@@ -24,7 +12,7 @@ USAGE
 docker_compose_run_simple_check()
 {
     service=$1
-    case ${service} in
+    case $service in
     magen_hwa|magen_bwa)
         # mongo not required
 	echo "Launching $service container."
@@ -39,21 +27,33 @@ docker_compose_run_simple_check()
     return 1
 }
 
-# arguments (mandatory/order-specific)
-docker_compose_file_path=$1
-service_name=$2
-port=$3
-magen_network_name='magen_net'
-docker_mongo_name='magen_mongo'
-
-if [ -z "$service_name" ] || [ -z "$port" ]; then
-    echo "Container [name] and [port] are required arguments"
-    usage 1;
-fi
-
 ###
 ### MAIN
 ###
+
+progname=$(basename $0)
+script_dir=$(dirname $0)
+PATH=$script_dir:$PATH
+
+# arguments (mandatory/order-specific)
+if [ $# -lt 1 ]; then
+    echo "$progname: FATAL: unexpected argument" >&2
+    exit 1
+fi
+
+docker_compose_fpath=$1
+magen_network_name=${2:-magen_net}
+docker_registry=$3
+
+case $docker_compose_fpath in
+*.yml)
+    # okay
+    ;;
+*)
+    echo "$progname: FATAL: unexpected argument ($1)" >&2
+    exit 1
+    ;;
+esac
 
 if [ -z "$(docker network ls | grep ${magen_network_name})" ]; then
     echo "Docker Network ${magen_network_name} being created."
@@ -64,13 +64,6 @@ else
 fi
 
 # launch  microservice and magen_mongo containers as needed
-if docker_compose_run_simple_check ${service_name}; then
-    docker-compose -f ${docker_compose_file_path}  up -d
-else
-    # - magen_mongo may already have been started (e.g. for another service)
-    #   in which case only start the microservice container
-    #   - Note: docker-compose complains of conflict if existing magen_mongo was
-    #           started on behalf of another service (though _not_,
-    #           interestingly, if previously started on behalf of this service).
-    docker-compose -f ${docker_compose_file_path} run --name ${service_name} -d -p ${port}:${port} ${service_name}
-fi
+docker_registry_login.sh $docker_registry pull || exit 1
+
+docker-compose -f ${docker_compose_fpath}  up -d

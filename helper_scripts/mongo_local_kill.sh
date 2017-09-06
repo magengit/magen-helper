@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -u
 
 docker_magen_mongo="magen_mongo"
 
