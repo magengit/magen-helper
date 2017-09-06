@@ -43,6 +43,7 @@ fi
 
 docker_compose_fpath=$1
 magen_network_name=${2:-magen_net}
+docker_registry=$3
 
 case $docker_compose_fpath in
 *.yml)
@@ -54,7 +55,6 @@ case $docker_compose_fpath in
     ;;
 esac
 
-
 if [ -z "$(docker network ls | grep ${magen_network_name})" ]; then
     echo "Docker Network ${magen_network_name} being created."
     # Explicit driver assigning
@@ -64,6 +64,6 @@ else
 fi
 
 # launch  microservice and magen_mongo containers as needed
-aws_login.sh || exit 1
+docker_registry_login.sh $docker_registry pull || exit 1
 
 docker-compose -f ${docker_compose_fpath}  up -d
