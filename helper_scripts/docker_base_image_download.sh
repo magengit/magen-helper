@@ -8,7 +8,7 @@ PATH=$PATH:${prog_dir}    # find various sub-utility scripts, in same directory
 
 docker_compose_check.sh || exit 1
 
-docker_registry=$(docker_registry_guess.sh) # hack
+docker_registry=$(workspace_info.sh --op registry)
 
 docker_registry_login.sh $docker_registry pull || exit 1
 

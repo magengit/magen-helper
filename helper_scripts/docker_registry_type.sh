@@ -12,7 +12,7 @@ PATH=$PATH:${prog_dir}    # find various sub-utility scripts, in same directory
 docker_registry=
 case $# in
 0)
-    docker_registry=$(docker_registry_guess.sh)
+    docker_registry=$(workspace_info.sh --op registry)
     ;;
 1)
     docker_registry=$1

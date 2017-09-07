@@ -62,6 +62,9 @@ matrix:
       env: TO_BUILD=DOCKER
   fast_finish: true
 
+before_script:
+  - printenv
+
 script:
   - if [ "$TRAVIS_BRANCH" = "master" -a "$TRAVIS_PULL_REQUEST" = "false" ]; then
       helper_scripts/travis_trigger_dependent_builds.sh;
