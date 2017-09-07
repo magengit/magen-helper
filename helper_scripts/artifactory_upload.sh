@@ -10,7 +10,7 @@ PATH=$PATH:${prog_dir}    # find various sub-utility scripts, in same directory
 # per-service state
 DOCKER_SRC_TAG=$1 # docker image + tag, ex.: magen_ks:v1.3
 DOCKER_IMAGE=$2 # docker image name, ex.: magen-ks
-docker_registry=$(woprkspace_analyze.sh --registry)
+docker_registry=$(workspace_info.sh --op registry)
 if [ -z "$docker_registry" ]; then
     echo "$progname: FATAL ERROR: docker registry not specified"
     exit 1

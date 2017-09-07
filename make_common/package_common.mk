@@ -96,7 +96,7 @@ common_pre_test:
 common_run_unit_test:
 	@sleep 2
 	$(info ************  STARTING TESTS ************)
-	@$(COVERAGE) $(PYTEST) tests
+	@coverage $(PYTEST) tests
 
 common_test:
 	@$(MAKE) start_mongo
