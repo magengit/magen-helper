@@ -40,14 +40,22 @@ docker_compose_run_simple_check()
 }
 
 # arguments (mandatory/order-specific)
-docker_compose_file_path=$1
-service_name=$2
-port=$3
+docker_compose_file_path=${1:-}
+service_name=${2:-}
+port=${3:-}
 magen_network_name='magen_net'
 docker_mongo_name='magen_mongo'
 
-if [ -z "$service_name" ] || [ -z "$port" ]; then
-    echo "Container [name] and [port] are required arguments"
+if [ -z "$docker_compose_file_path" ]; then
+    echo "<docker_compose_file> is required argument"
+    usage 1;
+fi
+if [ -z "$service_name" ]; then
+    echo "Container <name> is required argument"
+    usage 1;
+fi
+if [ -z "$port" ]; then
+    echo "Container <port> is required argument"
     usage 1;
 fi
 

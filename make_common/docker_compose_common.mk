@@ -1,5 +1,5 @@
-DOCKER_COMPOSE_RUN=bash $(MAGEN_HELPER)/helper_scripts/docker_compose_run.sh
-DOCKER_COMPOSE_UP=bash $(MAGEN_HELPER)/helper_scripts/docker_compose_up_wrapper.sh
+DOCKER_COMPOSE_RUN=$(MAGEN_HELPER)/helper_scripts/docker_compose_run.sh
+DOCKER_COMPOSE_UP=$(MAGEN_HELPER)/helper_scripts/docker_compose_up_wrapper.sh
 
 common_docker_compose_build:
 	@docker-compose build
