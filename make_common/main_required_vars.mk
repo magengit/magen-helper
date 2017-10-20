@@ -4,7 +4,6 @@ PACKAGE_TAG=
 PYTHON=python3
 MAKE=make
 PYTEST=pytest
-COVERAGE=coverage run -m
 SERVER_PID=
 OS := $(shell uname)
 PIP := pip3

@@ -1,4 +1,5 @@
 PIP=pip3
+COVERAGE=coverage run -m
 KILL_MONGO=$(MAGEN_HELPER)/helper_scripts/mongo_local_kill.sh
 START_MONGO=$(MAGEN_HELPER)/helper_scripts/mongo_local_start.sh
 UPLOAD_ARTIFACTS=$(MAGEN_HELPER)/helper_scripts/artifactory_upload.sh $(DOCKER_SRC_TAG) $(DOCKER_IMAGE)
@@ -96,7 +97,7 @@ common_pre_test:
 common_run_unit_test:
 	@sleep 2
 	$(info ************  STARTING TESTS ************)
-	@coverage $(PYTEST) tests
+	@$(COVERAGE) $(PYTEST) tests
 
 common_test:
 	@$(MAKE) start_mongo
