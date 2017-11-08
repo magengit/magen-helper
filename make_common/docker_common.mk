@@ -1,6 +1,5 @@
 STOP_DOCKER=bash $(MAGEN_HELPER)/helper_scripts/docker_stop.sh
 CLEAN_DOCKER=bash $(MAGEN_HELPER)/helper_scripts/docker_clean.sh
-PULL_BASE_DOCKER=cd $(MAGEN_HELPER)/helper_scripts && bash docker_base_image_download.sh
 REMOVE_DOCKERS=bash $(MAGEN_HELPER)/helper_scripts/docker_rm_all_images.sh
 
 common_clean_docker:
@@ -13,7 +12,11 @@ common_rm_docker:
 	@$(STOP_DOCKER)
 	@$(REMOVE_DOCKERS)
 
-common_build_docker:
+docker_dependencies:
+	$(MAKE) clean
+	$(MAKE) package
+
+common_build_docker: docker_dependencies
 	$(MAKE) kill_mongo
 	@cd docker_$(PACKAGE_TAG) && $(MAKE) docker_compose_build
 	$(MAKE) stop_docker
