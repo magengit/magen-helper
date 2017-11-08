@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 set -u
 
-# can a simple "docker-compose up" be used?
 #
 # return 0 if can run docker-compose up to run all containers in yml file.
 #          (mongo not needed, or needed and not running)
@@ -12,7 +11,7 @@ set -u
 docker_compose_run_simple_check()
 {
     service=$1
-    case $service in
+    case ${service}} in
     magen_hwa|magen_bwa)
         # mongo not required
 	echo "Launching $service container."
@@ -33,7 +32,10 @@ docker_compose_run_simple_check()
 
 progname=$(basename $0)
 script_dir=$(dirname $0)
-PATH=$script_dir:$PATH
+PATH=${script_dir}:$PATH
+docker_compose_fpath=
+magen_network_name=magen_net
+docker_registry=
 
 # arguments (mandatory/order-specific)
 if [ $# -lt 1 ]; then
@@ -41,19 +43,24 @@ if [ $# -lt 1 ]; then
     exit 1
 fi
 
-docker_compose_fpath=$1
-magen_network_name=${2:-magen_net}
-docker_registry=$3
-
-case $docker_compose_fpath in
-*.yml)
-    # okay
+for arg in "$@"
+do
+  case ${arg} in
+    --path=*)
+    docker_compose_fpath="${arg#*=}"
     ;;
-*)
-    echo "$progname: FATAL: unexpected argument ($1)" >&2
-    exit 1
+    --network=*)
+    magen_network_name="${arg#*=}"
     ;;
-esac
+    --account=*)
+    docker_registry="${arg#*=}"
+    ;;
+    *)
+    echo "Unknown option ${arg}. Abort..."
+    exit 0
+    ;;
+  esac
+done
 
 if [ -z "$(docker network ls | grep ${magen_network_name})" ]; then
     echo "Docker Network ${magen_network_name} being created."
@@ -63,7 +70,13 @@ else
     echo "Docker Network ${magen_network_name} exists, continuing."
 fi
 
-# launch  microservice and magen_mongo containers as needed
-docker_registry_login.sh $docker_registry pull || exit 1
+if [ -n "$docker_registry" ]; then
+    # launch  microservices and magen_mongo container as needed
+    docker_registry_login.sh ${docker_registry} pull || exit 1
+fi
 
-docker-compose -f ${docker_compose_fpath}  up -d
+if [ -n "$docker_compose_fpath" ]; then
+    docker-compose -f ${docker_compose_fpath}  up -d
+    exit 1
+fi
+docker-compose up -d
