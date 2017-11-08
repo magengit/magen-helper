@@ -77,6 +77,6 @@ fi
 
 if [ -n "$docker_compose_fpath" ]; then
     docker-compose -f ${docker_compose_fpath}  up -d
-    exit 1
+    exit 0
 fi
 docker-compose up -d
