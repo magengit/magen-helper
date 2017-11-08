@@ -13,7 +13,7 @@ common_rm_docker:
 	@$(REMOVE_DOCKERS)
 
 docker_dependencies:
-    $(MAKE) update
+	$(MAKE) update
 	$(MAKE) clean
 	$(MAKE) package
 
