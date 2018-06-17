@@ -100,7 +100,9 @@ common_run_unit_test:
 	@$(COVERAGE) $(PYTEST) tests
 
 common_test:
+ifndef DB_TYPE
 	@$(MAKE) start_mongo
+endif
 	@$(MAKE) pre_test
 	@$(MAKE) run_unit_test
 	@$(MAKE) coverage_report
@@ -111,7 +113,9 @@ common_test_travis:
 	@$(MAKE) coverage_report
 
 clean_test: stop_docker clean_docker
+ifndef DB_TYPE
 	@$(MAKE) start_mongo
+endif
 	@$(MAKE) pre_test
 	@$(MAKE) run_unit_test
 	@$(MAKE) coverage_report
